@@ -1,5 +1,7 @@
 ## ipc
 
+[![Build Status](https://travis-ci.org/mfs/ipc.svg?branch=master)](https://travis-ci.org/mfs/ipc)
+
 A simple clone of ipcalc in Rust. Written to get a feel for the language. Needs
 cleaning up here and there and I have a couple of ideas for extra features.
 

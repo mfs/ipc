@@ -129,6 +129,11 @@ impl CIDR {
     fn to_octets(&self) -> Vec<u32> {
         vec![self.address >> 24 & 0xff, self.address >> 16 & 0xff, self.address >> 8 & 0xff, self.address & 0xff]
     }
+
+    fn reverse_dns(&self) -> String {
+        let o = self.to_octets();
+        format!("{}.{}.{}.{}.in-addr.arpa", o[3], o[2], o[1], o[0])
+    }
 }
 
 fn process(ip: CIDR) {
@@ -139,7 +144,7 @@ fn process(ip: CIDR) {
     println!("HostMin:   {:16} {}", ip.host_min().to_string_ip(), ip.host_min().to_string_binary());
     println!("HostMax:   {:16} {}", ip.host_max().to_string_ip(), ip.host_max().to_string_binary());
     println!("Broadcast: {:16} {}", ip.broadcast().to_string_ip(), ip.broadcast().to_string_binary());
-    println!("NumHosts:  {}", ip.num_hosts());
+    println!("NumHosts:  {:<16} rDNS: {}", ip.num_hosts(), ip.reverse_dns());
 }
 
 fn main() {

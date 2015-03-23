@@ -1,4 +1,3 @@
-#![feature(env)]
 #![feature(core)]
 #![feature(plugin)]
 #![plugin(regex_macros)]
@@ -38,7 +37,7 @@ impl CIDR {
 
         let limits = [0, 255, 255, 255, 255, 32];
 
-        for x in range(1, 6) {
+        for x in (1 .. 6) {
             let n = captures.at(x).unwrap().parse::<u32>().unwrap();
             if n > limits[x] {
                 return  Err("invalid cidr");

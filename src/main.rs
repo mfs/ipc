@@ -1,7 +1,3 @@
-#![feature(core)]
-#![feature(plugin)]
-#![plugin(regex_macros)]
-
 /*
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,6 +16,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 extern crate regex;
 
 use std::env;
+
+macro_rules! regex(
+    ($s:expr) => (::regex::Regex::new($s).unwrap());
+);
 
 struct CIDR {
     address: u32,
